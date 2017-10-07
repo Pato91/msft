@@ -4,10 +4,19 @@ def checkPalindrome(number):
 
 	def getReverse(number):
 		''' returns the reverse of a number '''
-		return int(str(number)[::-1])
+		# reversing an integer
+		reverse = 0
+		while(number != 0):
+			reverse = reverse*10 + number%10
+			number = int(number / 10)
+		return reverse
+
+		# using string conversion
+		# return int(str(number)[::-1])
 
 	def isPalindrome(number):
 		reverse = getReverse(number)
+
 		if reverse == number:
 			return True
 		else:
