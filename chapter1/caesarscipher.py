@@ -2,6 +2,18 @@ import unittest
 
 def encode(string, num_shift, char_shift):
 	''' returns an encoded string '''
+
+	def shift(value, type_shift, range_min, range_max):
+		''' cyclic shift '''
+		if value in range(range_min, range_max+1):
+			value += type_shift
+			if value > range_max:
+				value = value%range_max + range_min-1;
+			elif value < range_min:
+				value = range_max+1 - (range_min-value);
+
+			return  chr(value)
+
 	encoded = []
 	for c in string:
 		value = ord(c)
@@ -10,36 +22,24 @@ def encode(string, num_shift, char_shift):
 		min_number = ord('0')
 		max_number = ord('9')
 		if value in range(min_number, max_number+1):
-			value += num_shift
-			if value > max_number:
-				value = value%max_number + min_number;
-			elif value < min_number:
-				value = max_number+1 - (min_number-value);
-			encoded.append(chr(value))
+			shifted = shift(value, num_shift, min_number, max_number)
+			encoded.append(shifted)
 			continue
 
 		# lowercase letters
 		min_lower = ord('a')
 		max_lower = ord('z')
 		if value in range(min_lower, max_lower+1):
-			value += char_shift
-			if value > max_lower:
-				value = value%max_lower + min_lower-1;
-			elif value < min_lower:
-				value = max_lower+1 - (min_lower-value);
-			encoded.append(chr(value))
+			shifted = shift(value, char_shift, min_lower, max_lower)
+			encoded.append(shifted)
 			continue
 
 		# uppercase letters
 		min_upper = ord('A')
 		max_upper = ord('Z')
 		if value in range(min_upper, max_upper+1):
-			value += char_shift
-			if value > max_upper:
-				value = value%max_upper + min_upper-1;
-			elif value < min_upper:
-				value = max_upper+1 - (min_upper-value);
-			encoded.append(chr(value))
+			shifted = shift(value, char_shift, min_upper, max_upper)
+			encoded.append(shifted)
 			continue
 
 		# special characters
