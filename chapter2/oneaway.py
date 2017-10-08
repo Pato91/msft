@@ -47,6 +47,10 @@ class Tests(unittest.TestCase):
         self.assertTrue(oneAway(['bulk', 'bulk']))
         self.assertTrue(oneAway(['bulk', 'bulb']))
 
+    def test_empty_strings(self):
+        self.assertTrue(oneAway(['b','']))
+        self.assertTrue(oneAway(['','']))
+
     def test_one_away(self):
         self.assertTrue(oneAway(['self', 'selfi']))
 
