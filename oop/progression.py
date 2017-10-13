@@ -6,6 +6,7 @@ class Progression(object):
 	def __init__(self, start=0):
 		''' Initialize current to the first value in progression '''
 		super(Progression, self).__init__()
+		self._start = start
 		self._current = start
 
 	def _advance(self):
@@ -27,6 +28,10 @@ class Progression(object):
 	def __iter__(self):
 		''' an iterator must return itself: convention '''
 		return self
+
+	def _sum(self, n):
+		''' sum all the first n elements of progression '''
+		return sum( next(self) for i in range(n) )
 
 	def print_progression(self, n):
 		''' prints next n values of progression '''
@@ -50,6 +55,10 @@ class TestProgression(unittest.TestCase):
 	def test_print_progression_in_range(self):
 		p = Progression()
 		self.assertEqual(p.print_progression(6), '0 1 2 3 4 5')
+
+	def test_sum(self):
+		p = Progression()
+		self.assertEqual(p._sum(101), 5050)
 
 
 if __name__ == '__main__':
