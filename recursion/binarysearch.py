@@ -1,6 +1,7 @@
 def binarysearch(needle, haystack, start, end):
 	''' performs a recursive binary search on a list,
 	find needle in haystack
+	Runtime is O(log n)
 	'''
 
 	if start > end:

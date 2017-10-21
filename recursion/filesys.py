@@ -1,7 +1,9 @@
 import os
 
 def diskUse(path_):
-	''' recursively computes the total file size a project directory '''
+	''' recursively computes the total file size a project directory
+	Runtime is O(n) - tree traversal : worst case is O(n^2)
+	'''
 
 	total = os.path.getsize(path_) #get size of current folder
 	print(path_)

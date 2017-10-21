@@ -17,6 +17,8 @@ def ruler(n, tl):
 	n:  number of cm for ruler
 	tl: major tick length
 	not drawn to scale
+
+	Runtime : analyse the runtime of draw_interval() : (2^cl) - 1
 	'''
 	draw_line(tl, 'O')
 

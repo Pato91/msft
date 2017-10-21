@@ -1,5 +1,7 @@
 def factorial(n):
-	''' recursively compute the factorial of a number n '''
+	''' recursively compute the factorial of a number n
+	Runtime is O(n) - each recursive call has O(1) ops
+	'''
 	if n == 0:
 		return 1
 	else:
