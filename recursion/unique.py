@@ -2,13 +2,14 @@ import unittest
 
 def unique(lst):
 	''' checks if all the elements in lst are unique
-	Runtime: O(n^2)
+	Worst case runtime: O(nlogn) while sorting:
+	Comparison is O(n) - linear time
 	'''
 	n = len(lst)
-	for i in range(n):
-		for j in range(i+1, n):
-			if lst[i] == lst[j]:
-				return False
+	temp = sorted(lst)
+	for i in range(	1, n):
+		if temp[i-1] == temp[i]:
+			return False
 	return True
 
 
