@@ -3,13 +3,14 @@ import unittest
 def threewaydisjoint(A, B, C):
 	''' determines that the intersection between three sets is empty
 	no element x such that x is in A, x is in B and x is in C
-	Worst runtime, O(n^3) if A, B, C are size n
+	Worst runtime, O(n^2) if A, B, C are size n
 	'''
 	for x in A:
 		for y in B:
-			for z in C:
-				if x == y == z:
-					return False, 'sets have common elements'
+			if x == y: # only iterate over c if a and y are a match
+				for z in C:
+					if x == z:
+						return False, 'sets have common elements'
 	return True, 'sets are disjoint'
 
 
