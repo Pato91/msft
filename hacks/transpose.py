@@ -15,10 +15,12 @@ def transpose(M):
         elif any(len(row) < cols for row in M):  # unequal dimensions of rows in matrix
             raise Exception('Invalid Input')
         else:
-            T = [] # transpose matrix
-            for i in range(cols):
-                T.append(list(M[r][i] for r in range(rows)))
-            return T
+            # T = [] # transpose matrix
+            # for i in range(cols):
+            #     T.append(list(M[r][i] for r in range(rows)))
+            # return T
+
+            return [ [ M[r][i] for r in range(rows) ] for i in range(cols) ]
 
 
 class TestTranspose(unittest.TestCase):
@@ -32,7 +34,7 @@ class TestTranspose(unittest.TestCase):
 
     def test_empty_matrix(self):
         self.assertEqual(transpose([]), [])
-    
+
     def test_transpose_1x1(self):
         self.assertEqual(transpose([[1]]), [[1]])
 
