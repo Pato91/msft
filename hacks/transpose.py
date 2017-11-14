@@ -1,4 +1,5 @@
 import unittest
+# import numpy
 
 def transpose(M):
     """ Generate the transpose of a matrix M """
@@ -21,6 +22,8 @@ def transpose(M):
             # return T
 
             # return [ [ M[r][i] for r in range(rows) ] for i in range(cols) ]
+
+            # return numpy.transpose(M)
 
             return [ list(row) for row in zip(*M) ]
 
