@@ -20,7 +20,9 @@ def transpose(M):
             #     T.append(list(M[r][i] for r in range(rows)))
             # return T
 
-            return [ [ M[r][i] for r in range(rows) ] for i in range(cols) ]
+            # return [ [ M[r][i] for r in range(rows) ] for i in range(cols) ]
+
+            return [ list(row) for row in zip(*M) ]
 
 
 class TestTranspose(unittest.TestCase):
