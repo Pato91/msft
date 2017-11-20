@@ -9,6 +9,8 @@ class CircularQueue:
 	"""
 	FIFO Implementation of a queue ADT
 	uses a circularly linked list for underlying storage
+
+	Round-Robin scheduler implementation
 	"""
 	class _Node:
 		""" A non-public nested storage for a circularly linked list """
