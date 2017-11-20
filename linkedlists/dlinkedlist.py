@@ -1,11 +1,5 @@
 import unittest
 
-
-class Empty:
-	""" Error when attempting to access elements of an empty container """
-	pass
-
-
 class _DoublyLinkedBase:
 	""" A base class for a doubly linked list representation """
 	class _Node:
