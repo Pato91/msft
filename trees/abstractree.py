@@ -50,3 +50,22 @@ class Tree:
 			""" Return True if tree is empty """
 			return len(self) == 0
 
+		def depth(self, p):
+			""" Return the number of levels separating p from the root """
+			if self.is_root(p):
+				return 0
+			else:
+				return 1 + self.depth(self.parent(p))
+
+		def height(self, p=None):
+			"""
+			Return the height of the subtree rooted at position P,
+			By default, return the height of the entire tree
+			"""
+			if p is None:
+				p = self.root()
+				return self.height(p)
+			elif self.is_leaf(p):
+				return 0
+			else:
+				return 1 + max(self.height(c) for c in self.children(p))
