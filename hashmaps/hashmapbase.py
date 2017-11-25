@@ -1,4 +1,5 @@
 from mapbase import MapBase
+from random import randrange
 
 
 class HashMapBase(MapBase):
@@ -20,7 +21,7 @@ class HashMapBase(MapBase):
 
 	def _hash_function(self, key):
 		""" Create a MAD compressed hash-code of the key """
-		return (hash(k)*self._scale + self._shift) % self._prime %  len(self._table)
+		return (hash(key)*self._scale + self._shift) % self._prime %  len(self._table)
 
 	def _resize(self, c):
 		""" Resize bucket array to capacity c """
