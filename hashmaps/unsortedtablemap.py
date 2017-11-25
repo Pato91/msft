@@ -77,7 +77,7 @@ class TestUnsortedTableMap(unittest.TestCase):
 		m['first'] = 1
 		m['second'] = 2
 		m['third'] = 3
-		self.assertEqual( list(iter(m)), ['first', 'second', 'third'])
+		self.assertEqual( set(iter(m)), {'first', 'second', 'third'})
 
 if __name__ == '__main__':
 	unittest.main()
