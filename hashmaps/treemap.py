@@ -49,6 +49,46 @@ class TreeMap(LinkedBinaryTree, MapBase):
 			walk = self.right(walk)
 		return walk
 
+	def _relink(self, parent, child, make_left_child):
+		""" Relink parent node with child node, possibly allow child to be None """
+		if make_left_child:
+			parent._left = child  # make it a left child
+		else:
+			parent._right = child  # make it a right child
+		if child is not None:
+			child._parent = parent
+
+	def _rotate(self, p):
+		""" Rotate position p above its parent """
+		x = p._node
+		y = x._parent # assume this exists
+		z = y._parent # grandparent : possibly None
+		if z is None:
+			# original rotation case
+			self._root = x
+			x._parent = None
+		else:
+			self._relink(z, x, y == z._left) # x becomes a direct child of z
+		# now rotate x and y, including transfer of middle subtree
+		if x == y._left:
+			self._relink(y, x._right, True) # x._right becomes left child of y
+			self._relink(x, y, False) # y becomes right child of x
+		else:
+			self._relink(y, x._left, False) # x._left becomes right child of y
+			self._relink(x, y, True) # y becomes left child of x
+
+	def _restructure(self, x):
+		""" Perform trinode restructure of position x with parent/grandparent """
+		y = self.parent(x)
+		z = zelf.parent(y)
+		if (x==self.right(y)) == (y == self.right(z)): # matching alignments
+			self._rotate(y) # single rotation of y
+			return y # y becomes new subtree root
+		else: # double rotation
+			self._rotate(x)
+			self._rotate(x)
+			return x
+
 	# Public accesor utilities ---------------
 
 	def is_empty(self):
