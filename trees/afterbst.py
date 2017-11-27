@@ -52,3 +52,15 @@ Algorithm after(p):
 			ancestor = parent(ancestor)
 		return ancestor
 
+Algorithm search(p, v):
+	"""
+	Algorithm for searching for a value v in a BST
+	p is root of BST
+	O(log n) upper bound for a balanced tree : h height of tree == log(n)
+	"""
+	if v < p._value and p.left_child() is not None:
+		return search(p.left_child(), v)
+	elif v > p._value and p.right_child() is not None:
+		return search(p.right_child(), v)
+	else:
+		return p._value == v
