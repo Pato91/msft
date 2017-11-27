@@ -1,0 +1,8 @@
+AVL Trees
+
+Splay Trees
+
+Red Black Trees
+
+	? what are they
+	? what are their applications
