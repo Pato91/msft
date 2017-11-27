@@ -20,7 +20,7 @@ class BinaryTree(Tree):
 		if parent is None: # p is root
 			return None
 		else:
-			if p = self.left(parent):
+			if p == self.left(parent):
 				return self.right(parent)
 			return self.left(parent)
 
