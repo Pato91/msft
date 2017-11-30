@@ -26,6 +26,6 @@ def mergeSort(arr):
 	return merge(arr1, arr2)
 
 
-arr = [10, 3, 100, 20, 33, 70, 0]
+# arr = [10, 3, 100, 20, 33, 70, 0]
 
-print(mergeSort(arr))
+# print(mergeSort(arr))
