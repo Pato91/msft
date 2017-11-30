@@ -25,11 +25,12 @@ def oneAway(pair):
             if len1<len2:
                 longer_word = pair[1]
                 shorter_word = pair[0]
-            longer_word = pair[0]
-            shorter_word = pair[1]
+            else:
+                longer_word = pair[0]
+                shorter_word = pair[1]
 
-            for i in range(len(shorter_word)):
-                if shorter_word[i] not in longer_word:
+            for i in range(len(longer_word)):
+                if longer_word[i] not in shorter_word:
                     difference += 1
                 if difference > 1:
                     return False
@@ -56,6 +57,7 @@ class Tests(unittest.TestCase):
 
     def test_two_away(self):
         self.assertFalse(oneAway(['self', 'selfie']))
+        self.assertFalse(oneAway(['jodom', 'j0doms']))
 
 if __name__ == '__main__':
     unittest.main()
